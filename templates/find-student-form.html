@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block main %}
+<body>
+    <div class='container'>
+        <form action="/find" method="POST">
+            <legend>参数查询：</legend>
+            <p>学生学号<input name="student_id" placeholder="student id" >
+            参加课程<input name="student_course" placeholder="course id" ></p>
+            
+            <p>学生姓名<input name="student_name" placeholder="stduent name" >
+            获奖情况<input name="student_reward" placeholder="reward name" ></p>
+            
+            <p>参加研讨<input name="student_seminar" placeholder="seminar name" ></p>
+            
+            <p>绩点区间<input name="student_gpa_min" placeholder="0.00" >~
+            <input name="student_gpa_max" placeholder="4.00" ></p>
+            
+            <p>专业<select name='student_major' ><option value="通信工程">通信工程</option>
+            <option value="生物医学工程">生物医学工程</option><option value="电子信息工程">电子信息工程</option></select>
+            
+            <p>年级<select name='student_grade'><option value="1">大一</option><option value="2">大二</option><option value="3" selected='selected'>大三</option><option value="4">大四</option></select></p>
+            
+            <p>没有不良记录：<input type="radio" checked="checked" name="is_dishonour" value="no" />有不良记录：<input type="radio" name="is_dishonour"  value="yes" ></p>
+
+            <p>升序：<input type="radio" checked="checked" name="up_or_down" value="up" />降序:<input type="radio" name="up_or_down" value="down" >
+            
+            按照<select name='order' ><option value="STUDENT_ID">学号</option><option value="STUDENT_NAME">姓名</option><option value="STUDENT_GPA">绩点</option></select>排序</p>
+            
+
+            <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" type="submit" formaction="/find/regex/student" >模糊查询</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" type="submit" formaction="/find/allstudent" >全部显示</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+        </form>
+    </div>
+  
+</body>
+{% endblock %}

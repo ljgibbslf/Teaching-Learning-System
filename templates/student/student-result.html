@@ -1,0 +1,76 @@
+{% extends "base-student.html" %} {% block main %}
+<body>
+    <div class="container">
+        
+        {% if result %}
+        <p style="color:red"></p>
+        {% endif %}
+        <table class="table table-hover table-bordered",>
+        {%if course%}   
+            <tr>
+                <th>课程编号&nbsp;&nbsp;</th>
+                <th>课程名称&nbsp;&nbsp;</th>
+                <th>课程时间&nbsp;&nbsp;</th>
+                <th>课程教室&nbsp;&nbsp;</th>
+                <th>课程答疑时间&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;</th>
+            </tr>
+           
+      {%endif%}
+      {% if teacher %}
+        
+            <tr>
+                <th>教师编号&nbsp;&nbsp;</th>
+                <th>教师姓名&nbsp;&nbsp;</th>
+                <th>教师学院&nbsp;&nbsp;</th>
+                <th>教师邮箱&nbsp;&nbsp;</th>
+                <th>教师手机&nbsp;&nbsp;</th>
+                <th>教师办公室&nbsp;</th>
+                <th>教师教研&nbsp;&nbsp; </th>
+                <th>教师授课&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;</th>
+            </tr>
+      {% endif %}
+      {% if score %}
+        
+            <tr>
+                <th>学生编号&nbsp;&nbsp;</th>
+                <th>课程编号&nbsp;&nbsp;</th>
+                <th>课程成绩&nbsp;&nbsp;</th>
+                
+            </tr>
+      {% endif %}
+      {% for i in result %}
+        
+      <tr>
+        {% for x in i %}
+          {% if x==none or x=='no'%}
+          
+        
+              <td>暂无&nbsp;&nbsp;</td>
+                
+          {% else %}
+              <td>{{ x }}&nbsp;&nbsp;</td>
+          {%endif%} 
+          
+        {% endfor %}
+        {%if course%}      
+        <td><a href="/student/course-teacher/{{i[0]}}">查看授课教师</a></td>
+        <td><a href="/student/course-work/{{i[0]}}">上传作业</a></td>
+        
+        </tr> 
+        {% endif %}
+        {%if teacher%}      
+        <td><a href="/contact-teacher/{{i[0]}}">联系授课教师</a></td>
+        <td><a href="/student/rate/{{i[0]}}">评价教师</a></td>
+        </tr>
+        {% endif %}
+      {% endfor %}
+            
+    </table>
+    
+    </div>
+</body>
+{% endblock %}

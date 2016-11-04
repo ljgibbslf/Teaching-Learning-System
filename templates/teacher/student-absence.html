@@ -1,0 +1,31 @@
+{% extends "base-teacher.html" %} {% block main %}
+<body>
+    <div class="container">
+        {%if message%}
+            <h3>{{message}}</h3>
+        {%endif%}
+        <form action='' method="POST">
+            {%if course_id%}
+        <p>课程：<input name='course_id' value="{{course_id}}"></p>
+        <p>学号：<input name='student_id' value="{{student_id}}"></p>
+        <p>该同学于
+            {%else%}
+        <p>课程：<input name='course_id' ></p>
+        <p>学号：<input name='student_id'></p>
+        <p>该同学于
+            {%endif%}
+            {%for x in range(1,11)%}
+            
+            <input type="checkbox" name="course_time{{x}}" value="{{x}}" />
+            第{{x}}次
+            {%endfor%}&nbsp;&nbsp;&nbsp;课程缺勤
+        </p>
+        
+            
+            <p><button class="btn btn-primary" type="submit">确认提交</button>
+            <button class="btn btn-primary" type="reset">重置选择</button></p>
+        </form>
+
+    </div>
+</body>
+{% endblock %}

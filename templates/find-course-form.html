@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block main %}
+<body>
+    <div class='container'>
+      <form action="/find" method="POST">
+        <legend>课程查询：</legend>
+        <p>课程编号<input name="course_id" placeholder="course id" >课程时间<input name="course_time" placeholder="course time" ></p>
+        <p>课程名称<input name="course_name" placeholder="course name"  >课程教室<input name="course_location" placeholder="course location" ></p>
+        
+        <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" type="submit" formaction="/find/regex/course" >模糊查询</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+      </form>
+    </div>
+</body>
+{% endblock %}

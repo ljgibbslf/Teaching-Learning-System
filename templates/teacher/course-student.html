@@ -1,0 +1,188 @@
+{% extends "base-teacher.html" %} {% block main %}
+<body>
+    <div class="container">
+        {% if result %}
+        <p style="color:red"></p>
+        {% endif %}
+        {%if student_id%}
+        <table class="table table-hover table-bordered">
+           
+            <tr>
+                <th>学生证号&nbsp;&nbsp;</th>
+                <th>学生姓名&nbsp;&nbsp;</th>
+                <th>学生年级&nbsp;&nbsp;</th>
+                <th>学生专业&nbsp;&nbsp;</th>
+                <th>学生邮箱&nbsp;&nbsp;</th>
+                <th>学生手机&nbsp;&nbsp;</th>
+                <th>学生绩点&nbsp;&nbsp; </th>
+                <th>学生奖项&nbsp;&nbsp;</th>
+                <th>学生课程&nbsp;&nbsp;</th>
+                
+                
+                
+                <th>&nbsp;&nbsp;</th>
+            </tr>
+           
+       
+      {% for i in result %}
+       
+      <tr>
+        {% for x in range(9) %}
+          {% if x==none or x=='no'%}
+          
+        
+              <td>暂无&nbsp;&nbsp;</td>
+                
+          {% else %}
+              <td>{{ i[x] }}&nbsp;&nbsp;</td>
+          {%endif%} 
+          
+        {% endfor %}
+        
+        
+        <td><a href="/teacher/student/absence/{{i[0]}}">记录缺勤</a>
+        <a href="/teacher/student/ordinary-score/{{i[0]}}">平时成绩</a>
+        <a href="/teacher/student/score/{{i[0]}}">成绩历史</a></td>
+        </tr>
+      {% endfor %}
+      
+     
+    </table>
+        {%endif%}
+
+        {%if course_id%}
+        <form action='' method="POST">
+            <p>按照<select name='order'><option value="student_id">学生学号</option><option value="student_gpa">学生绩点</option>
+            <option value="student_rate">学生评价</option></select>排序&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" type="submit">排序学生</button>
+        </form>
+        
+        
+        
+        <table class="table table-hover table-bordered">
+           
+            <tr>
+                <th>学生证号&nbsp;&nbsp;</th>
+                <th>学生姓名&nbsp;&nbsp;</th>
+                <th>学生年级&nbsp;&nbsp;</th>
+                <th>学生专业&nbsp;&nbsp;</th>
+                <th>学生邮箱&nbsp;&nbsp;</th>
+                <th>学生手机&nbsp;&nbsp;</th>
+                <th>学生绩点&nbsp;&nbsp; </th>
+                <th>学生课程&nbsp;&nbsp;</th>
+                <th>缺勤总数&nbsp;&nbsp;</th>
+                <th>缺勤课时&nbsp;&nbsp;</th>
+                
+                
+                <th>&nbsp;&nbsp;</th>
+            </tr>
+           
+    
+      {% for i in result %}
+       
+      <tr>
+        {% for x in i %}
+          {% if x==none or x=='no'%}
+          
+        
+              <td>暂无&nbsp;&nbsp;</td>
+                
+          {% else %}
+              <td>{{ x }}&nbsp;&nbsp;</td>
+          {%endif%} 
+          
+        {% endfor %}
+        
+        
+        <td><a href="/teacher/student/{{i[0]}}">管理</a>
+        <a href="/contact-student/{{i[0]}}">联系</a></td>
+       
+        </tr>
+      {% endfor %}
+      
+     
+    </table>
+     {%endif%}
+
+     {%if student_score %}
+        <table class="table table-hover table-bordered">
+           
+           <tr>
+                <th>学生证号&nbsp;&nbsp;</th>
+                <th>课程编号&nbsp;&nbsp;</th>
+                <th>课程成绩&nbsp;&nbsp;</th>
+           </tr>
+           
+       
+      {% for i in result %}
+       
+      <tr>
+        {% for x in i %}
+          {% if x==none or x=='no'%}
+          
+        
+              <td>暂无&nbsp;&nbsp;</td>
+                
+          {% else %}
+              <td>{{ x }}&nbsp;&nbsp;</td>
+          {%endif%} 
+          
+        {% endfor %}
+        
+        
+        
+       
+        </tr>
+      {% endfor %}
+      
+     
+    </table>
+     {%endif%}
+
+     {%if student_rate %}
+        <form action='' method="POST">
+            <p>按照<select name='order'><option value="student_rate">学生评价</option><option value="student_gpa">学生绩点</option>
+            <option value="student_id">学生学号</option>
+            </select>排序&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" type="submit">排序学生</button>
+        </form>
+        <table class="table table-hover table-bordered">
+           
+           <tr>
+                <th>学生证号&nbsp;&nbsp;</th>
+                <th>学生姓名&nbsp;&nbsp;</th>
+                <th>评价总分&nbsp;&nbsp;</th>
+                <th>各项得分&nbsp;&nbsp;</th>
+                <th>评价教师&nbsp;&nbsp;</th>
+                <th>课程编号&nbsp;&nbsp;</th>
+                
+           </tr>
+           
+       
+      {% for i in result %}
+       
+      <tr>
+        {% for x in i %}
+          {% if x==none or x=='no'%}
+          
+        
+              <td>暂无&nbsp;&nbsp;</td>
+                
+          {% else %}
+              <td>{{ x }}&nbsp;&nbsp;</td>
+          {%endif%} 
+          
+        {% endfor %}
+        
+        
+        
+       
+        </tr>
+      {% endfor %}
+      
+     
+    </table>
+     {%endif%}
+    </div>
+</body>
+{% endblock %}

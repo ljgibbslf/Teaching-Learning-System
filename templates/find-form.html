@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block main %}
+
+<body>
+    <div class='container'>
+        {%if reward%}
+        <form action="/find/reward" method="POST">
+            <legend>奖项查询：</legend>
+            <p>奖项编号<input name="reward_id" placeholder="reward id">获奖同学<input name="reward_student_id" placeholder="reward student id"></p>
+            <p>奖项名称<input name="reward_name" placeholder="reward name"></p>
+
+            <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+                <button class="btn btn-primary" type="submit" formaction="/find/regex/reward">模糊查询</button>&nbsp;&nbsp;
+                <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+        </form>
+        {%endif%} {%if seminar%}
+        <form action="/find/seminar" method="POST">
+            <legend>研讨查询：</legend>
+            <p>研讨编号<input name="seminar_id" placeholder="seminar id">参加同学<input name="seminar_student_id" placeholder="seminar student id"></p>
+            <p>研讨名称<input name="seminar_name" placeholder="seminar name">主持教师<input name="seminar_teacher_id" placeholder="seminar teacher id"></p>
+
+            <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+                <button class="btn btn-primary" type="submit" formaction="/find/regex/seminar">模糊查询</button>&nbsp;&nbsp;
+                <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+        </form>
+        {%endif%} {%if course%}
+        <form action="/find/course" method="POST">
+            <legend>课程查询：</legend>
+            <p>课程编号<input name="course_id" placeholder="course id">课程时间<input name="course_time" placeholder="course time"></p>
+            <p>课程名称<input name="course_name" placeholder="course name">课程教室<input name="course_location" placeholder="course location"></p>
+
+            <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+                <button class="btn btn-primary" type="submit" formaction="/find/regex/course">模糊查询</button>&nbsp;&nbsp;
+                <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+        </form>
+        {%endif%} {%if teacher%}
+        <form action="/find/teacher" method="POST">
+            <legend>教师查询：</legend>
+            <p>教师工号<input name="teacher_id" placeholder="teacher id">教授课程<input name="teacher_course" placeholder="course id"></p>
+            <p>教师姓名<input name="teacher_name" placeholder="teacher name">主持研讨<input name="teacher_seminar" placeholder="seminar name"></p>
+            <p>学院<select name='teacher_college'><option value="%">所有学院</option><option value="通信学院">通信学院</option><option value="计算机学院">计算机学院</option><option value="材料学院">材料学院</option><option value="环化学院">环化学院</option>
+            <option value="l">理学院</option><option value="机自学院">机自学院</option></select>
+                <p>升序：<input type="radio" checked="checked" name="up_or_down" value="up" />降序:<input type="radio" name="up_or_down"
+                        value="down"> 按照
+                    <select name='order'><option value="TEACHER_ID">教师编号</option><option value="TEACHER_NAME">教师姓名</option></select>排序</p>
+
+                <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+                    <button class="btn btn-primary" type="submit" formaction="/find/regex/teacher">模糊查询</button>&nbsp;&nbsp;
+                    <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+        </form>
+        {%endif%} {%if student%}
+        <form action="/find/student" method="POST">
+            <legend>参数查询：</legend>
+            <p>学生学号<input name="student_id" placeholder="student id"> 参加课程
+                <input name="student_course" placeholder="course id"></p>
+
+            <p>学生姓名<input name="student_name" placeholder="stduent name"> 获奖情况
+                <input name="student_reward" placeholder="reward name"></p>
+
+            <p>参加研讨<input name="student_seminar" placeholder="seminar name"></p>
+
+            <p>绩点区间<input name="student_gpa_min" placeholder="0.00">~
+                <input name="student_gpa_max" placeholder="4.00"></p>
+
+            <p>专业<select name='student_major'><option value="all">所有专业</option><option value="通信工程">通信工程</option>
+            <option value="生物医学工程">生物医学工程</option><option value="电子信息工程">电子信息工程</option></select>
+
+                <p>年级<select name='student_grade'><option value="1">大一</option><option value="2">大二</option><option value="3" selected='selected'>大三</option><option value="4">大四</option></select></p>
+
+                <p>没有不良记录：<input type="radio" checked="checked" name="is_dishonour" value="no" />有不良记录：<input type="radio" name="is_dishonour"
+                        value="yes"></p>
+
+                <p>升序：<input type="radio" checked="checked" name="up_or_down" value="up" />降序:<input type="radio" name="up_or_down"
+                        value="down"> 按照
+
+                    <select name='order'><option value="STUDENT_ID">学号</option><option value="STUDENT_NAME">姓名</option><option value="STUDENT_GPA">绩点</option></select>排序</p>
+
+
+                <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+                    <button class="btn btn-primary" type="submit" formaction="/find/regex/student">模糊查询</button>&nbsp;&nbsp;
+                    <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+        </form>
+        {%endif%}
+    </div>
+</body>
+{% endblock %}

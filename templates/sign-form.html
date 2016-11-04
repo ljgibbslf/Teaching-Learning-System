@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block main %}
+<div class='container'>
+    <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 登录</h3>
+                    </div>
+                    <div class="panel-body">
+                        
+                        <form action="/signin" method="post">
+                            <div class="form-group">
+                                {%if message%}
+                                <p style="color:red">{{message}}</p>
+                                {%endif%}
+                                <label>Student/Teacher ID</label>
+                                <input  name="id" class="form-control" placeholder="Student/Teacher ID">
+                                <p class="help-block">请使用学号或教师号登陆</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                                <p class="help-block">请输入您的密码</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+                            
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>没有账号</h3>
+                    </div>
+                    <div class="panel-body">
+                     
+                                 <a href="/register" class="btn btn-primary btn-lg btn-block" type="butter">立刻加入</a>&nbsp;&nbsp;
+                                
+                    
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}

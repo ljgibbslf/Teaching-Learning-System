@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block main %}
+<body>
+    <div class="container">
+<h3>{{course_id}}班级作业</h3>
+{%if message%}
+    <h3>{{message}}</h3>
+    {%endif%}
+ <table class="table table-hover",>
+           
+    <tr>
+        <th>学生证号&nbsp;&nbsp;</th>
+        <th>学生姓名&nbsp;&nbsp;</th>
+        <th>作业成绩&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;</th>
+        
+    </tr>
+    <form action='/teacher/homework/score/{{course_id}}' method='POST'>
+    {%for i in result%}
+    <tr>
+        {%for x in range(2)%}
+         
+              <td>{{ i[x] }}&nbsp;&nbsp;</td>
+         
+        {%endfor%}
+                <td><select name={{i[0]}}>
+                        {%for x in range(100)%}
+                        <option value={{x}}>{{x}}</option>
+                        {%endfor%}
+                        <option value=100 selected='selected'>100</option>
+                    </select> </td>
+        {%if find_work==True%} 
+            {%for y in all_work[i[0]]%}
+                
+                <td><a href='/teacher/course-work/open/{{i[0]}}/{{y}}'>{{y}}</a></td>
+                
+            {%endfor%}
+        {%endif%}
+    </tr>
+    {%endfor%}
+    <td>&nbsp;&nbsp;<button type="submit" class="btn btn-primary" >确认提交</button> </td>
+ </form>
+ </table>
+    </div>
+</body>
+{% endblock %}

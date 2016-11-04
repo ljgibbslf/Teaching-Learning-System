@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block main %}
+<body>
+  <div class='container'>
+    <form action="/find" method="POST">
+    <legend>教师查询：</legend>
+    <p>教师工号<input name="teacher_id" placeholder="teacher id" >教授课程<input name="teacher_course" placeholder="course id" ></p>
+    <p>教师姓名<input name="teacher_name" placeholder="teacher name"  >主持研讨<input name="teacher_seminar" placeholder="seminar name" ></p>
+    <p>学院<select name='teacher_college' ><option value="通信学院">通信学院</option><option value="计算机学院">计算机学院</option><option value="材料学院">材料学院</option><option value="环化学院">环化学院</option>
+            <option value="l">理学院</option><option value="机自学院">机自学院</option></select>
+    <p>升序：<input type="radio" checked="checked" name="up_or_down" value="up" />降序:<input type="radio" name="up_or_down" value="down" >
+    按照<select name='order' ><option value="TEACHER_ID">教师编号</option><option value="TEACHER_NAME">教师姓名</option></select>排序</p>
+    
+    <p><button class="btn btn-primary" type="submit">精确查询</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" type="submit" formaction="/find/regex/teacher" >模糊查询</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" type="reset">重置条件</button></p>&nbsp;&nbsp;
+    </form>
+  </div>
+  
+</body>
+{% endblock %}

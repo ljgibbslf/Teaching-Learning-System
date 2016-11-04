@@ -1,0 +1,102 @@
+{% extends "base-teacher.html" %} {% block main %}
+<body>
+    <div class="container">
+    {%if message%}
+    <h3>{{message}}</h3>
+    {%endif%}
+     {%if student_id%}
+     <table class="table table-hover",>
+           
+            <tr>
+                <th>学生证号&nbsp;&nbsp;</th>
+                <th>学生姓名&nbsp;&nbsp;</th>
+                <th>学生年级&nbsp;&nbsp;</th>
+                <th>学生专业&nbsp;&nbsp;</th>
+                <th>学生邮箱&nbsp;&nbsp;</th>
+                <th>学生手机&nbsp;&nbsp;</th>
+                <th>学生绩点&nbsp;&nbsp; </th>
+                <th>学生奖项&nbsp;&nbsp;</th>
+                <th>学生课程&nbsp;&nbsp;</th>
+                <th>学生研讨&nbsp;&nbsp;</th>
+                <th>学生不良记录&nbsp;</th>
+                <th>&nbsp;&nbsp;</th>
+            </tr>
+           
+       <tr>{{session.course_id_now}}</tr>
+      
+      {% for i in result %}
+       
+      <tr>
+        {% for x in i %}
+         
+              <td>{{ x }}&nbsp;&nbsp;</td>
+          
+          
+        {% endfor %}
+        
+        
+        <td> 
+            <form action='' method='POST'>
+                    平时成绩：&nbsp;<select name={{i[0]}}>
+                        {%for x in range(100)%}
+                        <option value={{x}}>{{x}}</option>
+                        {%endfor%}
+                        <option value=100 selected='selected'>100</option>
+                    </select>
+                    &nbsp;&nbsp;<button type="submit" class="btn btn-primary" >确认提交</button>                  
+
+            </form>
+        </td>
+        </tr>
+      {% endfor %}
+            
+    </table>
+     
+     {%else%}
+     
+      <table class="table table-hover",>
+           
+    <tr>
+        
+        <th>学生证号&nbsp;&nbsp;</th>
+        <th>学生姓名&nbsp;&nbsp;</th>
+        <th>平时成绩&nbsp;&nbsp;</th>
+        <th>新的平时成绩&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;</th>
+    </tr>
+    {%for i in result%}
+    <tr>
+        {%for x in range(4)%}
+        {%if i[x]== none%}
+              <td>尚未上传&nbsp;&nbsp;</td>
+        {%else%}
+              <td>{{ i[x] }}&nbsp;&nbsp;</td>
+         {%endif%}
+        {%endfor%} 
+                    
+              <td>
+                  <form action='' method="POST">
+                    <select name={{i[0]}}>
+                        {%for x in range(100)%}
+                        <option value={{x}}>{{x}}</option>
+                        {%endfor%}
+                        <option value=100 selected='selected'>100</option>
+                    </select>
+                                     
+
+                
+
+                 
+              </td>
+                                    
+    </tr>
+    {%endfor%}
+    <td>&nbsp;&nbsp;<button type="submit" class="btn btn-primary" >确认提交</button> </td>
+ </form>
+ </table>
+     
+     {%endif%}       
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block main %}
+<body>
+  <div class='container'>
+    {% if message %}
+    <p style="color:red">{{ message }}</p>
+    {% endif %}
+   
+    <form action="/message" method="post">
+      <legend>发送站内信:&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/email" class="btn btn-primary " type="butter">
+      发送邮件</a></legend>
+      
+      {%if receiver_id%}
+      <p>收件人：<input name="to" placeholder="To" value={{receiver_id}}></p>
+      <p>标题  ：<input name="title" placeholder="Title" type="text"></p>
+      <p>信息  ：<input name="text" placeholder="Text" type="text" size='50' value=''></p>
+      
+      {%else%}
+      
+      <p>收件人：<input name="to" placeholder="To" value=''></p>
+      <p>标题  ：<input name="title" placeholder="Title" type="text"></p>
+      <p>信息  ：<input name="text" placeholder="Text" type="text" size='50'></p>
+      {%endif%}
+      <p><button class="btn btn-primary" type="submit">发送</button></p>
+    </form>
+  </div>
+</body>
+
+{% endblock %}

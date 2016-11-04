@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block main %}
+<body>
+    <div class='container'>
+            <a href="/allmessage/read-all" class="btn btn-primary " type="butter">标记所有消息已读</a>&nbsp;&nbsp;
+            <a href="/allmessage/not-read-all" class="btn btn-primary " type="butter">标记所有消息未读</a>&nbsp;&nbsp;
+            <a href="/allmessage/delete-all" class="btn btn-primary " type="butter">删除当前所有消息</a>&nbsp;&nbsp;
+            <hr>
+        <table class="table table-hover ",>
+           
+            <tr>
+                <th>收件人&nbsp;&nbsp;</th>
+                <th>来自&nbsp;&nbsp;</th>
+                <th>消息&nbsp;&nbsp;</th>
+                <th>状态&nbsp;&nbsp;</th>
+                <th>回复&nbsp;&nbsp;</th>
+                
+            </tr>
+      {% for i in result %}
+        
+      <tr>
+        {% for x in i %}
+                {%if x=='f'%}
+                <td>未读&nbsp;&nbsp;</td>
+                {%elif x=='t'%}
+                <td>已读&nbsp;&nbsp;</td>
+                {%else%}
+                <td>{{ x }}&nbsp;&nbsp;</td>
+                {%endif%}
+                
+      {% endfor %}
+                <td><a href="/message/{{i[1]}}" class="btn btn-primary " type="butter">回复</a></td>
+      {% endfor %}
+      </tr>   
+    </table>
+      
+    </div>
+</body>
+{% endblock %}

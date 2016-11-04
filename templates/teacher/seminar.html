@@ -1,0 +1,37 @@
+{% extends "base-teacher.html" %} {% block main %}
+<body>
+    <div class="container">
+         <div class="row">
+            
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 创建研讨</h3>
+                </div>
+                <div class="panel-body">
+                    {%if message%}
+                        <p style="color:red">{{message}}</p>
+                    {%endif%}
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label>研讨名称</label>
+                            <input  name="seminar_name" class="form-control" placeholder="seminar name">
+                            
+                            <label>研讨时间</label>
+                            <input name="seminar_time" class="form-control" placeholder="seminar time">
+                            
+                            <label>研讨地点</label>
+                            <input name="seminar_location" class="form-control" placeholder="seminar location">
+                            
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" >创建研讨</button>
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+         
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base-student.html" %} {% block main %}
+<body>
+    <div class='container'>
+        <form action='/student/course-work/{{course_id}}' method="POST" enctype="multipart/form-data">
+            <p>课程{{course_id}}的作业</p> 
+            选择你要上传的文件：<input type="file" name="file">
+            <p><button class="btn btn-primary" type="submit">上交</button></p>
+        </form>
+        <p>已经上传的文件：</p>
+        <a href="/uploads/1.jpg">测试</a>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base-teacher.html" %} {% block main %}
+<body>
+    <div class="container">
+        <div class='row'>
+        {%if message!=False%}
+        {%for x in message%}
+        
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>最新消息
+                   </h3>
+                </div>
+                <div class="panel-body">
+                    <p>来自{{x[1]}}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/message/{{x[1]}}" class="btn btn-primary " type="butter">回复</a></p>
+                    <p>{{x[2]}}</p>
+                    
+                </div>
+            </div>
+        </div>
+    
+        {%endfor%}
+        {%else%}
+         <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span>最新消息
+                   </h3>
+                </div>
+                <div class="panel-body">
+                    <p>暂时没有你的消息</p>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        {%endif%}
+        </div>
+    </div>
+</body>
+{% endblock %}
