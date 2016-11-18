@@ -9,8 +9,8 @@ I finished most of work with help of h.w.Liao(@https://github.com/Harwy)
 You can visit the result of this project by http://lifanspace.top/
 teacher id：1001
 student id：14120001
-psw(both)：159753
-===========================================
+psw(both)：111111
+
 这是我写的第一个项目，使用flask&mysql构建了一个教学管理系统——数据结构课程的课程作业
 第一个项目，非常潦草
 感谢组员以及ch.y.Chu同学的帮助！
